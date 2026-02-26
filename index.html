@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Human Helper | Transition Command Deck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient-bg" aria-hidden="true"></div>
+    <main class="app-shell">
+      <header class="hero reveal">
+        <p class="eyebrow">Human Helper / Transition OS</p>
+        <h1>Thrive Through the AI Transition</h1>
+        <p class="hero-copy">
+          A personal command deck for navigating the markets tracked on
+          humaine.com while balancing work, health, money, learning, and human
+          purpose.
+        </p>
+        <div class="hero-metrics">
+          <article class="metric">
+            <p>Thrive Score</p>
+            <strong id="thriveScore">0</strong>
+          </article>
+          <article class="metric">
+            <p>Focused Markets</p>
+            <strong id="focusedMarkets">0</strong>
+          </article>
+          <article class="metric">
+            <p>Weakest System</p>
+            <strong id="weakSystem">-</strong>
+          </article>
+        </div>
+      </header>
+
+      <section class="main-grid reveal">
+        <aside class="panel controls-panel">
+          <div class="panel-head">
+            <h2>Human Baseline</h2>
+            <p>Set your current reality first.</p>
+          </div>
+
+          <label class="field">
+            <span>Transition Horizon</span>
+            <select id="horizonSelect">
+              <option value="now">Now (0-12 months)</option>
+              <option value="build">Build (1-3 years)</option>
+              <option value="reinvent">Reinvent (3-10 years)</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span
+              >Weekly Transition Hours <strong id="hoursValue">8</strong></span
+            >
+            <input id="hoursInput" type="range" min="2" max="20" value="8" />
+          </label>
+
+          <label class="field">
+            <span>Risk Appetite <strong id="riskValue">3</strong>/5</span>
+            <input id="riskInput" type="range" min="1" max="5" value="3" />
+          </label>
+
+          <div class="domain-list">
+            <h3>Life System Readiness</h3>
+            <label class="domain">
+              <span>Work Capacity <output id="workOut">62</output></span>
+              <input
+                class="domain-input"
+                data-domain="work"
+                type="range"
+                min="0"
+                max="100"
+                value="62"
+              />
+            </label>
+            <label class="domain">
+              <span>Learning Agility <output id="learningOut">68</output></span>
+              <input
+                class="domain-input"
+                data-domain="learning"
+                type="range"
+                min="0"
+                max="100"
+                value="68"
+              />
+            </label>
+            <label class="domain">
+              <span>Financial Runway <output id="financeOut">54</output></span>
+              <input
+                class="domain-input"
+                data-domain="finance"
+                type="range"
+                min="0"
+                max="100"
+                value="54"
+              />
+            </label>
+            <label class="domain">
+              <span>Health Energy <output id="healthOut">61</output></span>
+              <input
+                class="domain-input"
+                data-domain="health"
+                type="range"
+                min="0"
+                max="100"
+                value="61"
+              />
+            </label>
+            <label class="domain">
+              <span
+                >Relationship Support <output id="relationshipsOut">58</output
+                ></span
+              >
+              <input
+                class="domain-input"
+                data-domain="relationships"
+                type="range"
+                min="0"
+                max="100"
+                value="58"
+              />
+            </label>
+            <label class="domain">
+              <span
+                >Civic Contribution <output id="civicOut">45</output></span
+              >
+              <input
+                class="domain-input"
+                data-domain="civic"
+                type="range"
+                min="0"
+                max="100"
+                value="45"
+              />
+            </label>
+          </div>
+
+          <button id="rebalanceBtn" class="rebalance-btn" type="button">
+            Auto-Rebalance Market Focus
+          </button>
+        </aside>
+
+        <section class="panel map-panel">
+          <div class="panel-head">
+            <h2>Market Constellation</h2>
+            <p>Select up to three markets to prioritize this cycle.</p>
+          </div>
+
+          <div class="orbit-wrap">
+            <div class="orbit-core">
+              <strong id="focusCount">0</strong>
+              <span>in focus</span>
+            </div>
+            <div id="orbit" class="orbit" aria-label="Market map"></div>
+          </div>
+
+          <article id="marketDetail" class="market-detail"></article>
+        </section>
+
+        <aside class="panel sprint-panel">
+          <div class="panel-head">
+            <h2>Transition Sprints</h2>
+            <p>Six moves for the next two weeks.</p>
+          </div>
+          <ol id="sprintList" class="sprint-list"></ol>
+          <div class="review-date">
+            <p>Next review date</p>
+            <strong id="reviewDate">-</strong>
+          </div>
+        </aside>
+      </section>
+
+      <section class="lower-grid reveal">
+        <article class="panel heat-panel">
+          <div class="panel-head">
+            <h2>Life System Heatmap</h2>
+            <p>Where your transition posture is strongest and weakest.</p>
+          </div>
+          <div id="lifeHeatmap" class="life-heatmap"></div>
+        </article>
+        <article class="panel scenario-panel">
+          <div class="panel-head">
+            <h2>Scenario Stack</h2>
+            <p>Projected advantage under three futures.</p>
+          </div>
+          <div id="scenarioCards" class="scenario-cards"></div>
+        </article>
+      </section>
+
+      <footer class="source-note reveal">
+        Market taxonomy aligned with
+        <a href="https://humaine.com/" target="_blank" rel="noreferrer"
+          >humaine.com</a
+        >.
+      </footer>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
